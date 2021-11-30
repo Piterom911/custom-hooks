@@ -4,16 +4,10 @@ import { UseInputReturnType } from './types';
 
 import { EMPTY_STRING } from 'constants/baseConstants';
 
-export const useInput = (): UseInputReturnType => {
-  const [inputValue, setInputValue] = useState(EMPTY_STRING);
+export const useInput = (initialValue?: string): UseInputReturnType => {
+  const [value, setValue] = useState(initialValue || EMPTY_STRING);
 
-  const handleInputValueChange = useCallback(
-    (newValue: string) => setInputValue(newValue),
-    [],
-  );
+  const onChange = useCallback((newValue: string) => setValue(newValue), []);
 
-  return useMemo(
-    () => ({ inputValue, handleInputValueChange }),
-    [inputValue, handleInputValueChange],
-  );
+  return useMemo(() => ({ value, onChange }), [value, onChange]);
 };

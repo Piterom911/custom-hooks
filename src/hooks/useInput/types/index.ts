@@ -1,1 +1,1 @@
-export type UseInputReturnType = any;
+export type UseInputReturnType = { value: string, onChange: (newValue: string) => void };

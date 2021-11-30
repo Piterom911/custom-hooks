@@ -8,7 +8,7 @@ import { ReturnComponentType } from 'types';
 // const CROP_INDEX = 3;
 
 export const CustomInput: FC<CustomInputType> = memo(({ title }): ReturnComponentType => {
-  const { inputValue, handleInputValueChange: onInputValueChange } = useInput();
+  const exampleUseInput = useInput();
 
   // If you are using a magic number and this is a local case,
   // you can create a constant before declaring the component => see line #8
@@ -23,7 +23,11 @@ export const CustomInput: FC<CustomInputType> = memo(({ title }): ReturnComponen
   return (
     <div>
       <h1>{title}</h1>
-      <input type="text" value={inputValue} onChange={onInputValueChange} />
+      <input
+        type="text"
+        value={exampleUseInput.value}
+        onChange={event => exampleUseInput.onChange(event.target.value)}
+      />
     </div>
   );
 });
